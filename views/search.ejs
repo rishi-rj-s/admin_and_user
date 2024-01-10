@@ -1,0 +1,54 @@
+<!-- include header -->
+<%- include('include/_header') %>
+
+<!-- Main Site Starts -->
+
+<main id='site-main'>
+     <div class="container">
+          <div class="box-nav d-flex-justify-between">
+               <button type="button" class="btn btn-success">
+                    <a href="/home" class="border-shadow">
+                         <span class="text-gradient">
+                              <i class="fas fa-angle-double-left"></i>&nbsp;All Users &nbsp;
+                         </span>
+                    </a>
+               </button>
+          </div>
+          <br><br>
+
+          <!-- Search form -->
+               <form class="form-inline" id="search_user" action="/search" method="get">
+                   <div class="form-group mb-4 ">
+                       <input class="form-control" type="text" name="name" placeholder="Search by Name" aria-label="Search">
+                   </div>
+                   <div class="form-group mb-4 ml-2">
+                       <input class="btn btn-primary" type="submit" value="Search">
+                   </div>
+               </form>
+                     <br><br>
+          <!-- Form Handling -->
+          <form action="/" method="post">
+               <table class="table">
+                    <thead>
+                         <tr class="bg-primary">
+                              <th scope="col">ID</th>
+                              <th scope="col">Name</th>
+                              <th scope="col">Gender</th>
+                              <th scope="col">Email</th>
+                              <th scope="col" class="text-center">Actions</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                         <!-- tbody for looping through each data or single data-->
+                         <%- include('include/_stbody')%>
+                    </tbody>
+               </table>
+          </form>
+          </div>
+</main>
+
+<!-- Main Site Ends-->
+
+<!-- include footer -->
+<%- include('include/_footer')%>
+

@@ -1,0 +1,17 @@
+<% for(var i=0; i<user.length;i++){ %>
+     <% if(user[i].email=="admin@gmail.com"){continue}%>
+     <tr>
+          <th scope="row" class="trbot"><%=i + 1%></th>
+          <td class="trbot"><%= user[i].name %></td>
+          <td class="trbot"><%= user[i].gender %></td>
+          <td class="trbot"><%= user[i].email %></td>
+          <td class="text-center">
+               <a class="btn border-shadow update" href="/updateuser?id=<%= user[i]._id %>"> 
+                    <button type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button>
+               </a>
+               <a class="btn border-shadow delete" data-id=<%= user[i]._id %>> 
+                    <button type="button" class="btn btn-danger" href="/deleteuser"><i class="fas fa-trash-alt"></i></button>
+               </a>
+          </td>
+     </tr>
+     <% } %>

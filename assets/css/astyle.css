@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=PT+Sans&display=swap');
+
+@media (max-width: 768px) {
+    .radio{
+         margin-left: 1.5em !important;
+     }     
+  }
+
+*{
+    font-family: 'PT Sans', sans-serif;
+}
+
+a{
+    font-family: 'PT Sans', sans-serif;
+    color: white;
+}
+
+a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.form-group{
+    width: 70% !important;
+    padding: .6em 1em;
+    margin: .5em 0;
+}
+
+.gender{
+    margin-left: 1em;
+}

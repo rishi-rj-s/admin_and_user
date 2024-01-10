@@ -1,0 +1,41 @@
+<!-- form handling -->
+<form class="form-block row" id="add_user" action="/api/users" method="post">
+     <div class="container">
+          <div class="form-group col">
+               <label for="name" class="text-light">Name</label>
+               <input type="hidden" name="id" value="">
+               <input class="form-control" type="text" name="name" placeholder="Enter name">
+          </div>
+          <div class="form-group col">
+               <label for="email" class="text-light">Email</label>
+               <input class="form-control" type="text" name="email" placeholder="example@gmail.com">
+          </div>
+          <div class="form-inline  gender">
+               <label for="Gender" class="text-light">Gender</label>&emsp;
+               <div class="radio inline">
+                    <input class="form-check-input" type="radio" name="gender" value="Male">
+                    <label for="Gender" class="text-light">Male</label>&emsp;
+               </div>
+               <div class="radio inline ">
+                    <input class="form-check-input" type="radio" name="gender" value="Female">
+                    <label for="Gender" class="text-light">Female</label>&emsp;
+               </div>
+               <div class="radio inline ">
+                    <input class="form-check-input" type="radio" name="gender" value="Other">
+                    <label for="Gender" class="text-light">Other</label>
+               </div>
+          </div>
+          <div class="form-group col">
+               <div class="col-auto">
+                 <label for="inputPassword6" class="col-form-label">Password</label>
+               </div>
+               <div class="col-auto">
+                 <input type="password" name="password" class="form-control" aria-describedby="passwordHelpInline">
+               </div>
+          </div>
+          <br>
+          <div class="form-group text-center">
+               <button type="submit" class="btn text-dark btn-success">Save</button>
+          </div>
+     </div>
+</form>

@@ -1,0 +1,57 @@
+<!-- include header -->
+<%- include('include/_header') %>
+
+<!-- Main Site Starts -->
+
+<main id='site-main'>
+     <div class="container">
+          <div class="d-flex justify-content-between">
+               <button type="button" class="btn btn-success">
+                    <a href="/adduser" class="border-shadow">
+                         <span class="text-gradient"><i class="fa-solid fa-user"></i>&nbsp; User &nbsp; <i class="fas fa-plus"></i> </span>
+                    </a>
+               </button>
+               <button type="button" class="btn btn-danger">
+                    <a href="/logout" class="border-shadow">
+                         <span class="text-gradient"><i class="fa-solid fa-power-off"></i>&nbsp; Logout &nbsp; </span>
+                    </a>
+               </button>
+          </div>
+          <br><br>
+
+          <!-- Search form -->
+               <form class="form-inline" id="search_user" action="/search" method="get">
+                   <div class="form-group mb-4 ">
+                       <input class="form-control" type="text" name="name" placeholder="Search by Name" aria-label="Search">
+                   </div>
+                   <div class="form-group mb-4 ml-2">
+                       <input class="btn btn-primary" type="submit" value="Search">
+                   </div>
+               </form>
+                     <br><br>
+          <!-- Form Handling -->
+          <form action="/" method="post">
+               <table class="table">
+                    <thead>
+                         <tr class="bg-primary">
+                              <th scope="col">ID</th>
+                              <th scope="col">Name</th>
+                              <th scope="col">Gender</th>
+                              <th scope="col">Email</th>
+                              <th scope="col" class="text-center">Actions</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                         <!-- tbody for looping through each data or single data-->
+                         <%- include('include/_tbody')%>
+                    </tbody>
+               </table>
+          </form>
+          </div>
+</main>
+
+<!-- Main Site Ends-->
+
+<!-- include footer -->
+<%- include('include/_footer')%>
+

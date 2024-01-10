@@ -1,0 +1,25 @@
+ @import url('https://fonts.googleapis.com/css2?family=Barlow&family=PT+Sans&display=swap');
+
+*{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+
+ a{
+     color: white;
+ }
+
+ a:hover{
+     text-decoration: none;
+     color: white;
+ }
+
+ .trbot{
+     padding-top: 1.25em !important;
+ }
+
+ @media (max-width: 445px) {
+     .trbot{
+          padding-top: 3em !important;
+      }     
+   }
