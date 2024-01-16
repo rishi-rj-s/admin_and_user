@@ -4,28 +4,30 @@ const controller = require('../controller/controller')
 const session = require('express-session')
 const { off, getMaxListeners } = require('../model/model')
 const axios = require('axios')
+const {adminCheck} = require('../../util/middlewares.js')
 
 const route = express.Router()
 
 //@desc Root route
 //method GET/
-route.get('/',(req, res) => {
-     if(req.session.user == "admin@gmail.com"){
+//@desc Root route
+//method GET/
+route.get('/', (req, res) => {
+     if (req.session.user && req.session.user.role == "admin") {
           res.redirect('/home')
-     }
-     else if(req.session.user){
+     } else if (req.session.user) {
           res.redirect('/userhome')
-     }
-     else{
+     } else {
           res.render('login')
      }
 })
 
 
+
 //@desc Admin Route
 //method GET/
-route.get('/home', (req, res) => {
-     if(req.session.user == "admin@gmail.com"){
+route.get('/home', adminCheck, (req, res) => {
+     if(req.session.user){
           //make a get req to /api/users
           axios.get("http://localhost:5002/api/users")
           .then(function(response){
@@ -40,7 +42,7 @@ route.get('/home', (req, res) => {
      }
 })
 route.get('/userhome', (req, res) => {
-     if(req.session.user != "admin@gmail.com"){
+     if(req.session.user && req.session.user.role != "admin"){
           res.render('userhome')
      }else{
           res.redirect('/')
@@ -55,9 +57,9 @@ route.get('/register',(req, res) => {
      }
 })
 
-route.get('/adduser',services.addUser)
-route.get('/updateuser',services.updateUser)
-route.get('/search',services.searchUser)
+route.get('/adduser', adminCheck, services.addUser)
+route.get('/updateuser', adminCheck, services.updateUser)
+route.get('/search', adminCheck, services.searchUser)
 
 
 //@desc Logout
@@ -73,14 +75,19 @@ route.get('/logout',(req, res) =>{
           }
      })
 }
+else{
+     res.redirect('/')
+}
 })
 
 //API
-route.post('/api/users', controller.create)
-route.get('/api/users', controller.find)
-route.get('/api/users/search', controller.search)
-route.put('/api/users/:id', controller.update)
-route.delete('/api/users/:id', controller.delete)
+route.route('/api/users')
+  .post(controller.create)
+  .get(controller.find);
+route.get('/api/users/search', controller.search);
+route.route('/api/users/:id')
+  .put(controller.update)
+  .delete(controller.delete)
 route.post('/api/users/login', controller.login)
 
 module.exports = route
