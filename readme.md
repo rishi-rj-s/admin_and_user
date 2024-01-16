@@ -1,4 +1,4 @@
-# login_admin_user
+# admin_user
 
 A basic express js project built using node, express, and mongodb. 
 It consists of a login page, admin page, and a user page with sessions enabled.
