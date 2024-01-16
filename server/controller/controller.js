@@ -8,15 +8,14 @@ exports.login = async(req, res) => {
 
 const {email,password}=req.body
 
-  const user= await Userdb.findOne({email:email})
-  if(user && (await bcrypt.compare(password, user.password))){
-    if(user.email == "admin@gmail.com"){
-      req.session.user = req.body.email
-      res.redirect('/home')
-    }else{
-      req.session.user = req.body.email
-      res.redirect('/userhome')
-    }
+  const users= await Userdb.findOne({email:email})
+  if(users && (await bcrypt.compare(password, users.password))){
+      req.session.user = users
+      if(req.session.user.role == "admin"){
+        res.redirect('/home')
+      }else{
+        res.redirect('/userhome')
+      }
   }else{
     res.redirect('/')
   }
