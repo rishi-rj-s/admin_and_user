@@ -22,6 +22,11 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                type: String,
                required: [true, "Select a gender"]
           },
+          role: {
+               type: String,
+               default: 'user',
+               enum: ['user', 'admin'] 
+             },
           password: {
                type: String,
                required: [true, "Need a password"]
